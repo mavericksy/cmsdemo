@@ -1,0 +1,17 @@
+<!---->
+<table class="table table-bordered border-primary">
+    <thead *ngIf="itemDetail != null">
+        <tr>
+            <th scope="col">ID</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">{{itemDetail?.itemid}}</th>
+        </tr>
+    </tbody>
+</table>
+
+<div class="btn-group" role="group" aria-label="">
+    <button type="button" class="btn btn-danger"><a class="nav-link" routerLink="images">Vehicle Images</a></button>
+</div>

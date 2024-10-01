@@ -1,0 +1,71 @@
+<!---->
+<form>
+	<div class="mb-3 row d-flex flex-row justify-content-between">
+		<div class="col-xs-3 col-sm-auto">
+			<input
+				id="table-complete-search"
+				type="text"
+				class="form-control"
+				name="searchTerm"
+				[(ngModel)]="itemService.searchTerm"
+			/>
+		</div>
+		@if (itemService.loading$ | async) {
+			<span class="col col-form-label">Loading...</span>
+		}
+		<div class="col-xs-3 col-sm-auto w-30 flex-shrink-1">
+			<a routerLink="/add"
+				class="btn btn-outline-dark me-2"
+			   routerLinkActive="active"
+				ariaCurrentWhenActive="page">Add Vehicle
+			</a>
+		</div>
+
+	</div>
+
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th scope="col" sortable="itemid"
+					(sort)="onSort($event)">#</th>
+				<th scope="col" sortable="regnum"
+					(sort)="onSort($event)">Reg. #</th>
+				<th scope="col" sortable="vin"
+					(sort)="onSort($event)">VIN</th>
+			</tr>
+		</thead>
+		<tbody>
+			@for (item of itemData$ | async; track item.itemid) {
+			<tr>
+				<th scope="row">{{ item.itemid }}</th>
+				<!--<td>
+					 <img
+						[src]="'/thumb/' + item.itemid"
+						[alt]=""
+						class="me-2"
+						style="width: 20px"/>-->
+				<td><ngb-highlight [result]="item.regnum" [term]="itemService.searchTerm" /></td>
+				<td><ngb-highlight [result]="item.vin" [term]="itemService.searchTerm" /></td>
+			</tr>
+			} @empty {
+			<tr>
+				<td colspan="4" style="text-align: center">No Vehicles Found.</td>
+			</tr>
+			}
+		</tbody>
+	</table>
+
+	<div class="d-flex justify-content-between p-2">
+		<ngb-pagination [collectionSize]="(total$ | async)!"
+						[(page)]="itemService.page"
+						[pageSize]="itemService.pageSize">
+		</ngb-pagination>
+
+		<select class="form-select" style="width: auto" name="pageSize"
+				[(ngModel)]="itemService.pageSize">
+			<option [ngValue]="2">2 items per page</option>
+			<option [ngValue]="4">4 items per page</option>
+			<option [ngValue]="6">6 items per page</option>
+		</select>
+	</div>
+</form>

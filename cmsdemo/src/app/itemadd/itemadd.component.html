@@ -1,0 +1,124 @@
+<!---->
+<div class="container">
+    <form [formGroup]="itemAdd" (ngSubmit)="onSubmit()" novalidate class="row needs-validation">
+
+        <div class="form-group">
+            <label class="form-label" for="regnum">Reg #</label>
+            <input type="text" class="form-control"
+                   required
+                   formControlName="regnum" id="regnum"
+                   placeholder="Reg #">
+        </div>
+        <div *ngIf="regnum.invalid && (regnum.dirty || regnum.touched)" class="alert">
+            <ngb-alert *ngIf="regnum.hasError('required')" type="danger">
+                Registration Number is required
+            </ngb-alert>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="make">Make</label>
+            <input type="text" class="form-control"
+                   required
+                   formControlName="make" id="make"
+                   placeholder="Make">
+        </div>
+        <div *ngIf="make.invalid && (make.dirty || make.touched)" class="alert">
+            <ngb-alert *ngIf="make.hasError('required')" type="danger">
+                Make is required
+            </ngb-alert>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="make">Model</label>
+            <input type="text" class="form-control"
+                   required
+                   formControlName="model" id="model"
+                   placeholder="Model">
+        </div>
+        <div *ngIf="model.invalid && (model.dirty || model.touched)" class="alert">
+            <ngb-alert *ngIf="model.hasError('required')" type="danger">
+                Model is required
+            </ngb-alert>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="make">Year</label>
+            <input type="text" class="form-control"
+                   formControlName="year" id="year"
+                   required
+                   placeholder="Year">
+        </div>
+        <div *ngIf="year.invalid && (year.dirty || year.touched)" class="alert">
+            <ngb-alert *ngIf="year.hasError('required')" type="danger">
+                Year is required
+            </ngb-alert>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="make">Kms</label>
+            <input type="text" class="form-control"
+                   formControlName="kms" id="kms"
+                   required
+                   placeholder="Year">
+        </div>
+        <div *ngIf="kms.invalid && (kms.dirty || kms.touched)" class="alert">
+            <ngb-alert *ngIf="kms.hasError('required')" type="danger">
+                KMs is required
+            </ngb-alert>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="make">Colour</label>
+            <input type="text" class="form-control"
+                   formControlName="colour" id="colour"
+                   required
+                   placeholder="Colour">
+        </div>
+        <div *ngIf="colour.invalid && (colour.dirty || colour.touched)" class="alert">
+            <ngb-alert *ngIf="colour.hasError('required')" type="danger">
+                Colour is required
+            </ngb-alert>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="make">VIN</label>
+            <input type="text" class="form-control"
+                   formControlName="vin" id="vin"
+                   required
+                   placeholder="VIN">
+        </div>
+        <div *ngIf="vin.invalid && (vin.dirty || vin.touched)" class="alert">
+            <ngb-alert *ngIf="vin.hasError('required')" type="danger">
+                VIN is required
+            </ngb-alert>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="make">Retail</label>
+            <input type="number" class="form-control"
+                   formControlName="retail" id="retail"
+                   required
+                   placeholder="Retail">
+        </div>
+        <div *ngIf="retail.invalid && (retail.dirty || retail.touched)" class="alert">
+            <ngb-alert *ngIf="retail.hasError('required')" type="danger">
+                Retail is required
+            </ngb-alert>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="make">Cost</label>
+            <input type="number" class="form-control"
+                   formControlName="cost" id="cost"
+                   required
+                   placeholder="Cost">
+        </div>
+        <div *ngIf="cost.invalid && (cost.dirty || cost.touched)" class="alert">
+            <ngb-alert *ngIf="cost.hasError('required')" type="danger">
+                Cost is required
+            </ngb-alert>
+        </div>
+
+        <button type="submit" class="btn btn-dark mt-4">Submit</button>
+    </form>
+</div>
